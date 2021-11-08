@@ -1,0 +1,21 @@
+class Solution {
+    public String getHint(String secret, String guess) {
+        //哈希表模拟
+        int len = secret.length();
+        int[] count1 = new int[10];
+        int[] count2 = new int[10];
+        int a = 0,b = 0;
+        for(int i = 0;i < len;i++){
+            int c1 = secret.charAt(i) - '0',c2 = guess.charAt(i) - '0';
+            if(c1 == c2){
+                a++;
+            }else{
+                //对hashtable填充
+                count1[c1]++;
+                count2[c2]++;
+            }
+        }
+        for(int i = 0;i < 10;i++) b += Math.min(count1[i],count2[i]);
+        return a + "A" + b + "B";
+    }
+}
