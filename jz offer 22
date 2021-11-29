@@ -1,0 +1,19 @@
+class Solution {
+    public ListNode getKthFromEnd(ListNode head, int k) {
+        //链表倒数第k个节点
+        //构建前后指针former.latter.前后指针。初始化在head
+        //将前指针向后移动k个单位
+        //前后指针同时向后移动k个单位，当 前指针->null时 latter与尾节点距离k - 1个距离
+
+        ListNode former = head;
+        ListNode latter = head;
+        for(int i = 0;i < k;i++){
+            former = former.next;
+        }
+        while(former != null){
+            former = former.next;
+            latter = latter.next;
+        }
+        return latter;
+    }
+}
